@@ -24,6 +24,7 @@
         }
         require_once '../core/210322ValidacionFormularios.php';
         require_once '../config/confDBPDO.php';
+        require_once '../config/confCookie.php';
         
         try{
             
@@ -140,7 +141,7 @@
     <body>
         <form name="formulario" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <div id="cajaTitulo">Proyecto Login-Logout</div>
-            <div id="infoUsuario">Bienvenid@ <?php echo $desUsuario ?> es la <?php echo $nConexiones ?>ª vez que te conectas <?php 
+            <div id="infoUsuario"><?php echo $aIdioma[$_COOKIE['idioma']]['bienvenido'] . " " . $desUsuario ?> es la <?php echo $nConexiones ?>ª vez que te conectas <?php 
                 if(!is_null($fechaUltimaConexion)){?>
                 y la ultima conexion fue <?php echo $fechaUltimaConexion; } ?></div>
             <fieldset>

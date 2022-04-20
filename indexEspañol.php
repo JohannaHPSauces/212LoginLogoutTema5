@@ -4,18 +4,22 @@
              * Created on: 20/04/2022
              * Aplicacion LogIn-LogOut Tema5
              */
-        if (isset($_REQUEST['salir'])) {
-            header('Location: ../212ProyectoTema5/index.php');
+        if (isset($_REQUEST['Iniciar'])) {
+            header('Location: ../codigoPHP/LogIn.php');
             exit;
         }
         if (!isset($_COOKIE['idioma'])){
-            setcookie("idioma", "es", time()+2000002); //Idioma en español y el tiempo de expiracion en +2000002
+            setcookie("idioma", "es", time()+2000002); //Pongo el idioma en español y el tiempo de expiracion en +2000002
             header('Location: indexInicio.php'); 
             exit;
         }
+        if (isset($_REQUEST['es'])) {
+            header('Location: indexEspañol.php');
+            exit;
+        }
         
-        if(isset($_REQUEST['idiomaSeleccionado'])){
-            setcookie("idioma", $_REQUEST['idiomaSeleccionado'], time()+2000002);//Ponemos que el idioma sea el seleccionado en el boton
+        if(isset($_REQUEST['idiomaBotonSeleccionado'])){
+            setcookie("idioma", $_REQUEST['idiomaBotonSeleccionado'], time()+2000002);//Ponemos que el idioma sea el seleccionado en el boton
         }
         
         include_once 'config/confCookie.php';
@@ -31,9 +35,6 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title></title>
         <style>
-            h2{
-                text-align: center;
-            }
             #cajaTitulo{
                 width: 100%;height: 50px;
                 background: grey;
@@ -44,10 +45,6 @@ and open the template in the editor.
             }
             body{
                 background: white;
-            }
-            a input{
-                color:red;
-                border:2px solid red;
             }
             input{
                 width: 200px;height: 60px;
@@ -105,15 +102,15 @@ and open the template in the editor.
             <!--class="titulo"-->
             <div id="cajaTitulo">Proyecto Login-Logout</div>
             <form class="cajaIdioma">
-                <button class="cajaIdioma" type="submit" name="idiomaSeleccionado" value="es" ><img src="images/es.png" alt="cargando.." height="20px"></button>
-                <button class="cajaIdioma" type="submit" name="idiomaSeleccionado" value="en" ><img src="images/in.png" alt="cargando.." height="20px"></button>
-                <button class="cajaIdioma" type="submit" name="idiomaSeleccionado" value="pt"><img src="images/po.png" alt="cargando.." height="20px"></button>
+                <button class="cajaIdioma" type="submit" name="idiomaBotonSeleccionado" value="es" ><img src="images/es.png" alt="cargando.." height="20px"></button>
+                <button class="cajaIdioma" type="submit" name="idiomaBotonSeleccionado" value="en" ><img src="images/in.png" alt="cargando.." height="20px"></button>
+                <button class="cajaIdioma" type="submit" name="idiomaBotonSeleccionado" value="pt"><img src="images/po.png" alt="cargando.." height="20px"></button>
             </form>
             <br>
-            <h2> <?php echo $aIdioma[$_COOKIE['idioma']]['elegido'] ?> <?php echo $aIdioma[$_COOKIE['idioma']]['seleccionado'] ?> </h2>
-            <a href="codigoPHP/LogIn.php"><input type="submit" value="Iniciar" name="iniciar"></a>
+            <h1> HAS SELECCIONADO EL IDIOMA ESPAÑOL</h1>
+            <input type="submit" value="Iniciar" name="iniciar sesion" class="iniciarsesion"/></input></a>
             <br>
-            <a href="../212ProyectoTema5/index.php"><input type="submit" value="Salir" name="Salir"></a>
+            <a href="../212ProyectoTema5/index.php"><input type="submit" value="Salir" name="Salir" class="iniciarsesion"/></input></a>
         </header>
         <footer>
             2021-22 I.E.S. Los sauces. ©Todos los derechos reservados. <strong> <a href="http://daw212.sauces.local/">Johanna Herrero Pozuelo</a></strong>
