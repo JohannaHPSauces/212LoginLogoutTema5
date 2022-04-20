@@ -32,7 +32,7 @@
             
             $usuarioSesion=$_SESSION['User212DWESProyectoTema5']; //guardo el usuario de la sesion para hacer el select
             
-            $consulta="SELECT T01_NumConexiones,T01_FechaUltimaConexion, T01_DescUsuario, T01_ImagenUsuario FROM T01_Usuario WHERE T01_CodUsuario='$usuarioSesion'";
+            $consulta="SELECT T01_NumConexiones,T01_FechaHoraUltimaConexion, T01_DescUsuario, T01_ImagenUsuario FROM T01_Usuario WHERE T01_CodUsuario='$usuarioSesion'";
             $resultadoConsulta=$miDB->prepare($consulta);
             $resultadoConsulta->execute();
             
@@ -63,7 +63,7 @@
         <style>
             div:nth-of-type(1){
                 width: 100%;height: 50px;
-                background: blueviolet;
+                background: grey;
                 font-size: 40px;
                 font-weight: bold;
                 color:white;
@@ -84,16 +84,16 @@
                 margin: 2rem auto;
                 font-size: 25px;
                 font-weight: bold;
-                color:white;
+                color:black;
             }
             body{
-                background: black;
+                background: white;
                 
             }
             fieldset{
                 text-align: center;
                 width: 450px;height: 20px;
-                color: white;
+                color: black;
                 font-weight: bold;
                 border:none;
                 border-radius: 10%;
@@ -106,7 +106,7 @@
                 width:135px; height: 40px;
             }
             footer{
-                background: blueviolet;
+                background: grey;
                 border-radius: 5px 5px 5px 5px;
                 font-weight: bold;
                 position: fixed;

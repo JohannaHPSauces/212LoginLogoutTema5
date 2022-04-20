@@ -33,7 +33,7 @@
                     $miDB= new PDO(HOST, USER, PASSWORD); //Objeto para establecer la conexion
                     $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//Establezco los atributos para la conexion
 
-                    $consulta ="SELECT T01_FechaUltimaConexion FROM T01_Usuario WHERE T01_CodUsuario='$usuarioIntroducido' AND T01_Password=SHA2('{$_REQUEST['usuario']}{$_REQUEST['password']}', 256)"; //Consulta
+                    $consulta ="SELECT T01_FechaHoraUltimaConexion FROM T01_Usuario WHERE T01_CodUsuario='$usuarioIntroducido' AND T01_Password=SHA2('{$_REQUEST['usuario']}{$_REQUEST['password']}', 256)"; //Consulta
                     $resultadoConsulta=$miDB->prepare($consulta); //Preparar la consulta
                     $resultadoConsulta->execute();//Ejecuta la consulta
                     
@@ -72,11 +72,11 @@
                     $miDB= new PDO(HOST, USER, PASSWORD);
                     $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                    $consulta="UPDATE T01_Usuario SET T01_NumConexiones=T01_NumConexiones+1, T01_FechaUltimaConexion= unix_timestamp() WHERE T01_CodUsuario='$usuarioIntroducido'";
+                    $consulta="UPDATE T01_Usuario SET T01_NumConexiones=T01_NumConexiones+1, T01_FechaHoraUltimaConexion= unix_timestamp() WHERE T01_CodUsuario='$usuarioIntroducido'";
                     $resultadoConsulta=$miDB->prepare($consulta);
                     $resultadoConsulta->execute();
                     
-                    $fechaUltimaConexion=$oConsulta->T01_FechaUltimaConexion;
+                    $fechaUltimaConexion=$oConsulta->T01_FechaHoraUltimaConexion;
                     $oConsulta= $resultadoConsulta->fetchObject();//Guardo el resultado de la consulta en un objeto
 
                 }catch(PDOException $excepcion){ //Pero se no se ha podido ejecutar saltara la excepcion
@@ -159,9 +159,6 @@
             }
             input:nth-of-type(3), input:nth-of-type(4){
                 width: 47%;height: 17%;
-            }
-            input:nth-of-type(3):hover, input:nth-of-type(4):hover{
-                background: beige;
             }
             span{
                 color:red;

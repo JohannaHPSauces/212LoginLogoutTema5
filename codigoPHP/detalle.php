@@ -7,21 +7,25 @@
             
             #cajaTitulo{
                 width: 100%;height: 50px;
-                background: blueviolet;
+                background: grey;
                 font-size: 40px;
                 font-weight: bold;
                 color:white;
                 text-align: center;
             }
+            .atras a{
+                color:white;
+                font-weight: bold;
+            }
             .atras{
                 width: 6%;height: 50px;
-                background: blueviolet;
+                background: grey;
                 text-align: center;
                 font-size: 40px;
                 font-weight: bold;
             }
             body{
-                background:black;
+                background:white;
                 text-align: center;
                 
             }
@@ -33,12 +37,12 @@
                 border: solid 2px black;
             }
             th{
-                background: orange;
+                background: black;
                 color:white;
             }
             td{
                 border: solid 1px black;
-                background: bisque;
+                background: white;
             }
             a{
                 text-decoration: none;

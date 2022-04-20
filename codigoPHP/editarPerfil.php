@@ -123,7 +123,7 @@
         <style>
              div:nth-of-type(1){
                 width: 100%;height: 50px;
-                background: blueviolet;
+                background: grey;
                 font-size: 40px;
                 font-weight: bold;
                 color:white;
@@ -132,13 +132,14 @@
             fieldset{
                 width: 280px;height: 500px;
                 text-align: center;
-                color: white;
+                color: black;
                 font-weight: bold;
                 font-size: 20px;
-                border: 4px solid orange;
+                border: 4px solid black;
                 margin: 2rem auto ;
                /* margin-left: 20rem ;*/
             }
+            
             .atras{
                 width: 6%;height: 50px;
                 background: blueviolet;
@@ -150,11 +151,14 @@
                 text-decoration: none;
             }
             body{
-                background: black;
+                background: white;
                 
             }
             input{
                 width: 150px;height:30px;
+            }
+            input:nth-of-type(1),input:nth-of-type(3), input:nth-of-type(4), input:nth-of-type(5){
+                background: lightgrey;
             }
             #usuario{
                 font-size: 20px;
@@ -169,7 +173,7 @@
                 font-size: 20px;
             }
             footer{
-                background: blueviolet;
+                background: grey;
                 border-radius: 5px 5px 5px 5px;
                 font-weight: bold;
                 position: fixed;
