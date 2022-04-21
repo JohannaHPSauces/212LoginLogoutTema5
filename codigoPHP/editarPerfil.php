@@ -159,7 +159,7 @@
             input{
                 width: 150px;height:30px;
             }
-            input:nth-of-type(1),input:nth-of-type(3), input:nth-of-type(4), input:nth-of-type(5){
+            fielset input:nth-of-type(1),input:nth-of-type(3), input:nth-of-type(4), input:nth-of-type(5){
                 background: lightgrey;
             }
             #usuario{
