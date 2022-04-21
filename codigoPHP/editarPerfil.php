@@ -60,7 +60,9 @@
             $fUsuario=$oConsulta->T01_CodUsuario; //Guardo en una variable el resultado de la fila codigo Usuario
             $fConexiones=$oConsulta->T01_NumConexiones; //Guardo en una variable el resultado de la fila num de Conexiones
             $fDescripcion=$oConsulta->T01_DescUsuario;
-            $fFechaHoraUltimaConexion=$_SESSION['fechaHoraUltimaConexionAnterior'];
+            //$fFechaHoraUltimaConexion=$_SESSION['fechaHoraUltimaConexionAnterior'];
+            $date=$oConsulta->T01_FechaHoraUltimaConexion;
+            $fFechaHoraUltimaConexion = date('d-m-Y H:i:s', $date);
             $fTipoUsuario=$oConsulta->T01_Perfil; //Guardo en una variable el resultado de la fila perfil
             
         }catch(PDOException $excepcion){ //Pero se no se ha podido ejecutar saltara la excepcion

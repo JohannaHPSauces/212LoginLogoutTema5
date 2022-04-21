@@ -8,16 +8,21 @@
             header('Location: ../212ProyectoTema5/index.php');
             exit;
         }
+        //Si se ha pulsado el boton de los  idiomas, creamos la cookie
         if (!isset($_COOKIE['idioma'])){
-            setcookie("idioma", "es", time()+2000002); //Idioma en español y el tiempo de expiracion en +2000002
+            setcookie("idioma", "es", time() + 30*24*60*60); //le pongo el nombre, el valor de la variable, y la fecha de caducidad.(1 mes)
             header('Location: indexInicio.php'); 
             exit;
         }
         
+        //Dependiendo del boton selcecionado, cambia el idioma
         if(isset($_REQUEST['idiomaSeleccionado'])){
-            setcookie("idioma", $_REQUEST['idiomaSeleccionado'], time()+2000002);//Ponemos que el idioma sea el seleccionado en el boton
+            setcookie("idioma", $_REQUEST['idiomaSeleccionado'],time() + 30*24*60*60);//Ponemos que el idioma sea el seleccionado en el boton
+            header('Location: indexInicio.php'); 
+            exit;
         }
         
+        //fichero que contie el array de lo que cambia con la cookie
         include_once 'config/confCookie.php';
 ?>
 <!DOCTYPE html>
@@ -44,10 +49,6 @@ and open the template in the editor.
             }
             body{
                 background: white;
-            }
-            a input{
-                color:red;
-                border:2px solid red;
             }
             input{
                 width: 200px;height: 60px;
@@ -110,7 +111,7 @@ and open the template in the editor.
                 <button class="cajaIdioma" type="submit" name="idiomaSeleccionado" value="pt"><img src="images/po.png" alt="cargando.." height="20px"></button>
             </form>
             <br>
-            <h2> <?php echo $aIdioma[$_COOKIE['idioma']]['elegido'] ?> <?php echo $aIdioma[$_COOKIE['idioma']]['seleccionado'] ?> </h2>
+            <h2> <?php echo $aIdioma[$_COOKIE['idioma']]['elegido'] ?> <?php echo $aIdioma[$_COOKIE['idioma']]['seleccionado'] ?> </h2> 
             <a href="codigoPHP/LogIn.php"><input type="submit" value="Iniciar" name="iniciar"></a>
             <br>
             <a href="../212ProyectoTema5/index.php"><input type="submit" value="Salir" name="Salir"></a>

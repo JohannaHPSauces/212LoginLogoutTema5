@@ -47,6 +47,7 @@
                 if($passwordIntroducida!=$confpasswordIntroducida){ //Comprobar que las contraseñas sean iguales
                     $aErrores['confirmarPassword']= "Las contraseñas no coinciden";//Si no coinciden las contraseñas mostramos error
                 }
+                
             }catch(PDOException $excepcion){ //Pero se no se ha podido ejecutar saltara la excepcion
                 $codigoError = $excepcion->getCode(); //Guardamos en una variable el codigo del error
                 $mensajeError = $excepcion->getMessage(); //guardamos en una variable el mensaje del error 
@@ -58,7 +59,7 @@
                      unset($miDB);
             }
                 foreach($aErrores as $campo =>$error){//Recorro el array de errores buscando si hay
-                    if($error ==null){// Si hay algun error 
+                    if($error !=null){// Si hay algun error 
                         $entradaOk=false;
                         $_REQUEST['campo']="";//Vacia los campos
                     }
@@ -76,11 +77,11 @@
                 $resultadoConsulta=$miDB->prepare($consulta); //preparo la consulta
                 $resultadoConsulta->execute();// ejecuto la consulta
                 
-                $consulta="UPDATE T01_Usuario SET T01_NumConexiones=T01_NumConexiones+1, T01_FechaUltimaConexion= unix_timestamp() WHERE T01_CodUsuario='$usuarioIntroducido'"; //Hago la consulta
+                $consulta="UPDATE T01_Usuario SET T01_NumConexiones=T01_NumConexiones+1, T01_FechaHoraUltimaConexion= unix_timestamp() WHERE T01_CodUsuario='$usuarioIntroducido'"; //Hago la consulta
                 $resultadoConsulta=$miDB->prepare($consulta);//preparar la consulta
                 $resultadoConsulta->execute(); //ejecutar la consulta
                     
-                $fechaUltimaConexion=$oConsulta->T01_FechaUltimaConexion; //guardo en una variable lo que contiene la columna de fechaUltimaConexion
+                $fechaUltimaConexion=$oConsulta->T01_FechaHoraUltimaConexion; //guardo en una variable lo que contiene la columna de fechaUltimaConexion
                 $oConsulta= $resultadoConsulta->fetchObject(); //Guardo el resultado de la consulta en un objeto
 
             }catch(PDOException $excepcion){ //Pero se no se ha podido ejecutar saltara la excepcion
@@ -111,21 +112,24 @@
         <meta charset="UTF-8">
         <title></title>
         <style>
+            p{
+                color:red;
+            }
             body{
-                background: black;
+                background: white;
             }
             fieldset{
                 width: 200px;height: 340px;
                 text-align: center;
-                color: white;
+                color: black;
                 font-weight: bold;
                 font-size: 20px;
-                border: 4px solid orange;
-                margin: 3rem auto ;
+                border: 4px solid black;
+                margin: 6rem auto ;
                /* margin-left: 20rem ;*/
             }
             footer{
-                background: blueviolet;
+                background: grey;
                 border-radius: 5px 5px 5px 5px;
                 font-weight: bold;
                 position: fixed;
@@ -137,8 +141,12 @@
                 padding: 2px;
                 vertical-align: middle;
             }
+            input{
+                font-size: 15px;
+                border-radius:5px;
+            }
             input:nth-of-type(5), input:nth-of-type(6){
-                height: 30px; width: 80px;
+                width: 47%;height: 10%;
             }
             a img{
                     display: flex;
@@ -156,10 +164,20 @@
             strong a:hover{
 		color:blue;
             }
+            div{
+                width: 100%;height: 50px;
+                background: grey;
+                font-size: 40px;
+                font-weight: bold;
+                color:white;
+                text-align: center;
+            }
         </style>
     </head>
     <body>
+        <div id="cajaTitulo">Registrarse</div>
         <form name="formulario" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+            
             <fieldset>
                 <label for="usuario">Usuario: </label>
                 <input type="text" id="usuario" name="usuario" value="<?php echo(isset($_REQUEST['usuario']) ? $_REQUEST['usuario'] : null); ?>"> <?php echo($aErrores['usuario']!=null ? "<span style='color:red'>".$aErrores['usuario']."</span>" : null); ?>
@@ -172,7 +190,7 @@
                 <br>
                 <label for="confirmarPassword">Repetir Contraseña: </label>
                 <input type="password" id="confirmarPassword" name="confirmarPassword" value="<?php echo(isset($_REQUEST['confirmarPassword']) ? $_REQUEST['confirmarPassword'] : null); ?>"> <?php echo($aErrores['confirmarPassword']!=null ? "<span style='color:red'>".$aErrores['confirmarPassword']."</span>" : null); ?>
-                <br>
+                <br><br>
                 <input type="submit" value="Aceptar" name="Aceptar">
                 <input type="submit" value="Cancelar" name="Cancelar">
             </fieldset>
