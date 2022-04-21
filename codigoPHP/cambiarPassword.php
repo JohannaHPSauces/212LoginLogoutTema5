@@ -112,7 +112,7 @@
         <style>
              div:nth-of-type(1){
                 width: 100%;height: 50px;
-                background: blueviolet;
+                background: grey;
                 font-size: 40px;
                 font-weight: bold;
                 color:white;
@@ -121,16 +121,16 @@
             fieldset{
                 width: 200px;height: 280px;
                 text-align: center;
-                color: white;
+                color: black;
                 font-weight: bold;
                 font-size: 20px;
-                border: 4px solid orange;
+                border: 4px solid black;
                 margin: 2rem auto ;
                /* margin-left: 20rem ;*/
             }
             .atras{
                 width: 6%;height: 50px;
-                background: blueviolet;
+                background: grey;
                 text-align: center;
                 font-size: 40px;
                 font-weight: bold;
@@ -139,11 +139,16 @@
                 text-decoration: none;
             }
             body{
-                background: black;
+                background: white;
                 
             }
             input{
-                width: 150px;height:30px;
+                font-size: 15px;
+                border-radius:5px;
+            }
+            .botones input:nth-of-type(2), input:nth-child(1){
+                 width: 47%;height: 15%;
+                 padding: 5px;
             }
             #usuario{
                 font-size: 20px;
@@ -158,7 +163,7 @@
                 font-size: 20px;
             }
             footer{
-                background: blueviolet;
+                background: grey;
                 border-radius: 5px 5px 5px 5px;
                 font-weight: bold;
                 position: fixed;
@@ -176,24 +181,27 @@
                 width:35px;
                 height:35px;
             }
-            strong{
-                color: black;
-                font-size: 20px;
+             strong{
+		font-size: 20px;
             }
-            strong:hover{
-                color: blue;
-            }
+            strong a{
+		color:black;
+		text-decoration: none;
+	}
+            strong a:hover{
+		color:blue;
+		}
             .botones{
-                /*border:1px solid red;*/
-                width: 305px;
-                margin: 4rem auto;
+               /* border:1px solid red;*/
+                width: 20%;height: 15%;
+                margin: 3rem auto;
             }
         </style>
     </head>
     <form name="formulario" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <div id="cajaTitulo">Editar Perfil</div>
         <fieldset>
-            <label for="viejaPassword">Contraseña </label>
+            <label for="viejaPassword">Contraseña: </label>
             <br>
             <input type="password" id="viejaPassword" name="viejaPassword"  value="<?php echo(isset($_REQUEST['viejaPassword']) ? $_REQUEST['viejaPassword'] : null); ?>"> <?php echo($aErrores['viejaPassword']!=null ? "<span style='color:red'>".$aErrores['viejaPassword']."</span>" : null); ?> 
             <br>
