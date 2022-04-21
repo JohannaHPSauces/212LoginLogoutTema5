@@ -134,7 +134,6 @@
                /* margin-left: 20rem ;*/
             }
             footer{
-       
                 background: grey;
                 border-radius: 5px 5px 5px 5px;
                 font-weight: bold;
