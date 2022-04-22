@@ -196,7 +196,7 @@
             </fieldset>
         </form>
         <footer>2021-22 I.E.S. Los sauces. ©Todos los derechos reservados. <strong>Johanna Herrero Pozuelo </strong>
-            <a  href="https://github.com/JohannaHPSauces/LoginLogoutTema5/tree/developer"><img src="../../proyectoDWES/webroot/images/git.png" class="git"></a>
+            <a  href="https://github.com/JohannaHPSauces/LoginLogoutTema5/tree/developer"><img src="../../images/git.png" class="git"></a>
 	</footer>
         
     </body>
