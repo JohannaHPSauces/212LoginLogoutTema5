@@ -1,3 +1,10 @@
+<?php
+        session_start();
+        if (!isset($_SESSION['User212DWESProyectoTema5'])) {
+            header('Location: LogIn.php');
+        }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -60,10 +67,7 @@
              * Created on: 20/01/2021
              * Aplicacion LogIn-LogOut Tema5
              */
-        session_start();
-        if (!isset($_SESSION['User212DWESProyectoTema5'])) {
-            header('Location: LogIn.php');
-        }
+        
         
         echo "<h3>Variable SESSION</h3><br>";
             echo "<table>";
